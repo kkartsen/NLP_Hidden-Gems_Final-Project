@@ -20,8 +20,8 @@ from tqdm import tqdm
 
 # ── Config ────────────────────────────────────────────────────────────────────
 
-INPUT_PATH = "data/raw/train_data.jsonl"          # update if your filename differs
-OUTPUT_DIR = "data/processed"
+INPUT_PATH = "../data/raw/train_data.jsonl"          # update if your filename differs
+OUTPUT_DIR = "../data/processed"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 
@@ -130,11 +130,7 @@ skipped_edges = 0
 for _, row in tqdm(df.iterrows(), total=len(df), desc="Adding edges"):
     src = row["paper_id"]
     for tgt in row["citing_ids"]:
-        if tgt in known_ids:
-            G.add_edge(src, tgt)
-            edge_count += 1
-        else:
-            skipped_edges += 1
+        G.add_edge(src, tgt)
 
 print(f"  Edges added (internal):  {edge_count:,}")
 print(f"  Edges skipped (external): {skipped_edges:,}")

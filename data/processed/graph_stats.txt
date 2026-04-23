@@ -1,9 +1,9 @@
 
 === Graph Sanity Check ===
-Nodes:              36,823
-Edges:              2,589
+Nodes:              306,326
+Edges:              394,258
 Is directed:        True
-Avg out-degree:     0.07   (references per paper)
+Avg out-degree:     10.71   (references per paper)
 Avg in-degree:      0.07    (citations per paper within dataset)
 Max in-degree:      14          (most-cited paper)
 Papers with 0 citations (in dataset): 35,730

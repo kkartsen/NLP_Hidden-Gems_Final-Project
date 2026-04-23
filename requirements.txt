@@ -1,0 +1,35 @@
+# Gap Miner — Hidden Gems in Citation Networks
+# Python 3.10
+
+# 1. Conda Environment Creation: conda create -n hidden-gems python=3.10 -y
+# 2. activate the environment: conda activate hidden-gems
+# 3. pip install -r requirements.txt
+
+# ── Graph ─────────────────────────────────────────────────────────────────────
+networkx==3.3
+python-louvain==0.16          # imports as: import community
+
+# ── Data handling ─────────────────────────────────────────────────────────────
+pandas==2.2.2
+numpy==1.26.4
+pyarrow==16.1.0               # needed for .parquet files
+
+# ── Regression model (Stage 5) ────────────────────────────────────────────────
+scikit-learn==1.5.1
+lightgbm==4.4.0
+
+# ── NLP / SciBERT validation (Stage 6) ───────────────────────────────────────
+torch==2.3.1
+transformers==4.43.3
+sentence-transformers==3.0.1  # for SPECTER model
+
+# ── Statistics (Stage 7) ──────────────────────────────────────────────────────
+scipy==1.13.1
+
+# ── Visualization (Stage 8) ───────────────────────────────────────────────────
+matplotlib==3.9.1
+pyvis==0.3.2                  # interactive graph visualization
+
+# ── Utilities ─────────────────────────────────────────────────────────────────
+tqdm==4.66.4                  # progress bars
+jupyter==1.0.0                # notebooks

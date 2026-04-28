@@ -1,0 +1,52 @@
+
+=== Bridge Scoring Report ===
+
+Graph
+  Nodes        : 306,326
+  Edges        : 394,258
+
+Stage A — Louvain
+  Resolution   : 1.5
+  Communities  : 6,604
+  Modularity Q : 0.8996
+  Largest comm : 13,106 papers
+  Median comm  : 3 papers
+  Singletons   : 0
+
+Stage B — Betweenness Centrality
+  k samples    : 500
+  Runtime      : 1198.8s
+  Nodes BC > 0 : 99,788
+  BC max       : 0.063332
+  BC 95th pct  : 0.000067
+
+Stage C — Cluster Diversity
+  Runtime           : 0.8s
+  Max diversity     : 74
+  Mean diversity    : 1.19
+  Multi-community   : 36,728 nodes
+
+Stage D — Bridge Score
+  Formula           : betweenness × cluster_diversity
+  Nodes score > 0   : 99,788
+  Max bridge score  : 4.306576
+  95th percentile   : 0.00012124
+  Top candidates    : 500
+
+Output files
+  papers_with_bridges.parquet   — full table, use for regression (WS3)
+  top_bridge_papers.csv         — top 500 candidates, use for SciBERT (WS4)
+
+Columns added to papers table:
+  community_id      — Louvain cluster ID (integer)
+  betweenness       — BC score, normalised [0, 1]
+  cluster_diversity — number of distinct communities among neighbours
+  bridge_score      — betweenness × cluster_diversity
+  bridge_score_log  — log1p(bridge_score), better feature for regression
+  is_bridge_candidate — True for top 500 by bridge_score
+
+WS3 (regression) uses:
+  bridge_score_log, cluster_diversity, betweenness, in_degree, out_degree, year
+
+WS4 (SciBERT) uses:
+  top_bridge_papers.csv — run embeddings on abstract column

@@ -1,0 +1,40 @@
+
+=== Citation Regression Stats ===
+ 
+MODEL
+  Algorithm:          LightGBM Gradient Boosting Regressor
+  Target:             log(1 + num_citations)
+  Features:           ['age', 'out_degree', 'cluster_diversity', 'bridge_score', 'citation_community_count', 'real_in_degree', 'community_size', 'community_encoded']
+  Train size:         29,458
+  Test size:          7,365
+ 
+PERFORMANCE
+  R² score:           0.9821
+  RMSE (log scale):   0.1270
+  Best iteration:     306
+ 
+FEATURE IMPORTANCES:
+                 feature  importance
+              out_degree        2447
+       community_encoded        2378
+          community_size        1910
+                     age        1797
+       cluster_diversity         465
+          real_in_degree         110
+            bridge_score          60
+citation_community_count          13
+ 
+RESIDUALS
+  Mean (all):         -0.0002
+  Std (all):          0.1225
+  Under-cited papers: 24,256
+  Over-cited papers:  12,567
+ 
+BRIDGE vs NON-BRIDGE RESIDUALS
+  Bridge papers (n=665):
+    Mean residual:    -0.0003
+    Median residual:  -0.0201
+  Non-bridge papers (n=36,158):
+    Mean residual:    -0.0002
+    Median residual:  -0.0383
+  Difference:         -0.0001

@@ -1,0 +1,56 @@
+
+=== Wilcoxon Statistical Test Results ===
+ 
+HYPOTHESIS
+  H0: Bridge papers and non-bridge papers have the same
+      citation residual distribution.
+  H1: Bridge papers have more negative residuals (under-cited).
+ 
+GROUPS
+  Bridge papers:     n=665
+  Non-bridge papers: n=36,158
+ 
+DESCRIPTIVE STATISTICS
+  Bridge residuals:
+    Mean:   -0.0180
+    Median: -0.0515
+    Std:    0.8131
+  Non-bridge residuals:
+    Mean:   -0.0011
+    Median: -0.1152
+    Std:    0.8566
+ 
+TEST RESULTS
+  Test:           Mann-Whitney U (one-tailed, alternative='less')
+  U statistic:    12162653.00
+  p-value:        0.697014
+  Result:         NOT significant (p >= 0.05)
+ 
+EFFECT SIZE
+  Cliff's delta:  -0.0117
+  Magnitude:      negligible
+  Interpretation: A randomly chosen bridge paper has a
+                  1.2% probability of being
+                  more under-cited than a non-bridge paper.
+ 
+BASELINE COMPARISONS
+  Random selection enrichment:   55.4x
+  Bottom citation overlap:       7/665 papers (1.1%)
+  Bridge papers among oldest:    0
+ 
+HIDDEN GEMS
+  Total identified:              41
+  (is_top_bridge + semantically validated + under-cited)
+ 
+TOP 10 HIDDEN GEMS:
+ rank                                                                                                                                                   title  year  bridge_score  residual  final_score
+    1                                             Mapping the genetic variation of regional brain volumes as explained by all common SNPs from the ADNI study  2013      0.040325 -1.686083     1.452579
+    2                                                             BMP signaling modulates hepcidin expression in zebrafish embryos independent of hemojuvelin  2011      0.055052 -1.609712     1.358072
+    3                            Association between U S state AIDS Drug Assistance Program ADAP features and HIV antiretroviral therapy initiation 2001 2009  2013      0.086019 -1.468544     1.353753
+    4                                                         Imaging Brain Metabolism and Pathology in Alzheimer s Disease with Positron Emission Tomography  2014      0.076180 -1.395246     1.217048
+    5                                                                                               Induction of histiocytic sarcoma in mouse skeletal muscle  2012      0.040325 -1.397554     1.073683
+    6                                                                          Differences in cortical response to acupressure and electroacupuncture stimuli  2011      0.040325 -1.161147     1.049206
+    7                                                      Asthma susceptibility variants identified using probands in case control and family based analyses  2010      0.040325 -1.147920     0.997108
+    8                                        Design and rationale of the comprehensive evaluation of risk factors in older patients with AMI SILVER AMI study  2014      0.044893 -1.124197     0.948397
+    9                       Trends in all cause mortality during the scale up of an antiretroviral therapy programme a cross sectional study in Lusaka Zambia  2014      0.044893 -0.964564     0.892406
+   10 Infusion of freshly isolated autologous bone marrow derived mononuclear cells prevents endotoxin induced lung injury in an ex vivo perfused swine model  2013      0.044893 -1.083676     0.870060

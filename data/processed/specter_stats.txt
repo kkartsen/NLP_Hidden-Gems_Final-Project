@@ -1,0 +1,32 @@
+
+=== SPECTER Semantic Validation Stats ===
+ 
+MODEL
+  Model:              allenai-specter
+  Similarity threshold: 0.3
+ 
+VALIDATION RESULTS
+  Top bridge papers evaluated:      71
+  Semantically validated:           71
+  Failed validation:                0
+ 
+SIMILARITY SCORES
+  Mean sim to home community:       0.9095
+  Mean sim to top neighbor:         0.8638
+  Mean bridge semantic score:       0.8597
+ 
+HIDDEN GEMS (all three criteria met)
+  Count:                            41
+ 
+TOP HIDDEN GEMS:
+paper_id                                                                                                                                                                  title  year  bridge_score  residual  bridge_semantic_score
+23082203                                                                                        Enrichment and stratification for predementia Alzheimer disease clinical trials  2012      0.196813 -0.041669               0.935892
+25378727                                      Trends in all cause mortality during the scale up of an antiretroviral therapy programme a cross sectional study in Lusaka Zambia  2014      0.044893 -0.964564               0.925191
+22702805 Comparing the association of GFR estimated by the CKD EPI and MDRD study equations and mortality the third national health and nutrition examination survey NHANES III  2012      0.040325 -0.570612               0.923166
+24260137                                           Association between U S state AIDS Drug Assistance Program ADAP features and HIV antiretroviral therapy initiation 2001 2009  2013      0.086019 -1.468544               0.921833
+24040196                                                                                            Mitochondrial haplotypes associated with biomarkers for Alzheimer s disease  2013      0.140085 -0.306188               0.918204
+21949713                                                                                            Genetics of sputum gene expression in chronic obstructive pulmonary disease  2011      0.040325 -0.261790               0.913830
+21794103                                                                                         Differences in cortical response to acupressure and electroacupuncture stimuli  2011      0.040325 -1.161147               0.903595
+22073156                                                                                Association of low level viremia with inflammation and mortality in HIV infected adults  2011      0.052101 -0.266445               0.902570
+20029939                                                Polymorphisms in CRHR1 and the serotonin transporter loci gene x gene x environment interactions on depressive symptoms  2010      0.117227 -0.146728               0.902134
+25533166                         Cross clade simultaneous HIV drug resistance genotyping for reverse transcriptase protease and integrase inhibitor mutations by Illumina MiSeq  2014      0.040325 -0.154842               0.900304

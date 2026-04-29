@@ -1,52 +1,48 @@
 
-=== Bridge Scoring Report ===
-
-Graph
-  Nodes        : 306,326
-  Edges        : 394,258
-
-Stage A — Louvain
-  Resolution   : 1.5
-  Communities  : 6,604
-  Modularity Q : 0.8996
-  Largest comm : 13,106 papers
-  Median comm  : 3 papers
-  Singletons   : 0
-
-Stage B — Betweenness Centrality
-  k samples    : 500
-  Runtime      : 1198.8s
-  Nodes BC > 0 : 99,788
-  BC max       : 0.063332
-  BC 95th pct  : 0.000067
-
-Stage C — Cluster Diversity
-  Runtime           : 0.8s
-  Max diversity     : 74
-  Mean diversity    : 1.19
-  Multi-community   : 36,728 nodes
-
-Stage D — Bridge Score
-  Formula           : betweenness × cluster_diversity
-  Nodes score > 0   : 99,788
-  Max bridge score  : 4.306576
-  95th percentile   : 0.00012124
-  Top candidates    : 500
-
-Output files
-  papers_with_bridges.parquet   — full table, use for regression (WS3)
-  top_bridge_papers.csv         — top 500 candidates, use for SciBERT (WS4)
-
-Columns added to papers table:
-  community_id      — Louvain cluster ID (integer)
-  betweenness       — BC score, normalised [0, 1]
-  cluster_diversity — number of distinct communities among neighbours
-  bridge_score      — betweenness × cluster_diversity
-  bridge_score_log  — log1p(bridge_score), better feature for regression
-  is_bridge_candidate — True for top 500 by bridge_score
-
-WS3 (regression) uses:
-  bridge_score_log, cluster_diversity, betweenness, in_degree, out_degree, year
-
-WS4 (SciBERT) uses:
-  top_bridge_papers.csv — run embeddings on abstract column
+=== Bridge Score Stats ===
+ 
+STAGE B — CITATION DIVERSITY SCORE
+  Nodes with score > 0:         74,566
+  Max raw score:                45.6134
+ 
+STAGE C — CLUSTER DIVERSITY
+  Nodes with diversity > 0:     272,628
+  Max diversity:                14
+  Distribution:
+    diversity = 1:  223,226
+    diversity = 2:  36,924
+    diversity = 3:  8,691
+    diversity = 4:  2,543
+    diversity 5+:   1,244
+ 
+STAGE D — BRIDGE SCORE
+  Papers with score > 0:        74,566
+  Max bridge score:             1.000000
+  Mean score (nonzero):         0.010182
+  Top 1% threshold:             0.006882
+  Top 5% threshold:             0.000000
+ 
+BRIDGE FLAG
+  Bridge papers flagged:        665
+ 
+OVERLAP SANITY CHECK
+  Papers in top 50 of both B and C:    38
+  Of those, in top 50 bridge score:    38
+ 
+TOP 15 BRIDGE PAPERS:
+paper_id                                                                                                                                         title  year  real_in_degree  citation_community_count  cluster_diversity  bridge_score
+24242258                                                      Impact of HIV related stigma on treatment adherence systematic review and meta synthesis  2013              14                        10                 10      0.424069
+21080967                           Imaging the functional connectivity of the Periaqueductal Gray during genuine and sham electroacupuncture treatment  2010              10                         8                  8      0.240320
+23082203                                                               Enrichment and stratification for predementia Alzheimer disease clinical trials  2012              12                         7                  7      0.196813
+22776534          Predictors of remission in depression to individual and combined treatments PReDICT study protocol for a randomized controlled trial  2012               9                         7                  7      0.176682
+24130489                                                               Prospective antiretroviral treatment of asymptomatic HIV 1 infected controllers  2013               9                         7                  7      0.176682
+25117447                                                                                    Laboratory test surveillance following acute kidney injury  2014               8                         7                  7      0.168597
+20700436              Multiple independent loci at chromosome 15q25 1 affect smoking quantity a meta analysis and comparison with lung cancer and COPD  2010               8                         6                  7      0.144512
+24040196                                                                   Mitochondrial haplotypes associated with biomarkers for Alzheimer s disease  2013              11                         6                  6      0.140085
+24397292                            Determinants of health after hospital discharge rationale and design of the Vanderbilt Inpatient Cohort Study VICS  2014               9                         6                  6      0.129807
+23322788                        Urban tree canopy and asthma wheeze rhinitis and allergic sensitization to tree pollen in a New York City birth cohort  2013               8                         6                  6      0.123867
+20029939                       Polymorphisms in CRHR1 and the serotonin transporter loci gene x gene x environment interactions on depressive symptoms  2010               7                         6                  6      0.117227
+22988468 Gene expression guided selection of candidate loci and molecular phenotype analyses enhance genetic discovery in systemic lupus erythematosus  2012              11                         5                  5      0.097281
+22815721                                                  Comparison of WTC dust size on macrophage inflammatory cytokine release in vivo and in vitro  2012               6                         5                  6      0.091416
+21305005                    A low T regulatory cell response may contribute to both viral control and generalized immune activation in HIV controllers  2011               6                         5                  6      0.091416
+24260137                  Association between U S state AIDS Drug Assistance Program ADAP features and HIV antiretroviral therapy initiation 2001 2009  2013               8                         5                  5      0.086019
